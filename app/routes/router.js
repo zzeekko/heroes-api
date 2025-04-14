@@ -7,11 +7,17 @@ const PORT = process.env.PORT || 3000
 // 2
 router.use(express.static('public'))
 
-//individual routes
-router.use('/api/hero', require('./api/heroRoutes'))
+const endpoints = [ 'hero', 'franchise', 'team', 'power', 'species']
 
-// 3
-//router.get(path, callback function)
+// individual routes
+// router.use('/api/hero', require('./api/heroRoutes'))
+// router.use('/api/franchise', require('./api/franchiseRoutes'))
+endpoints.forEach(endpoint => {
+    router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
+})
+
+// 3 
+// router.get(path, callback function)
 router.get('/', (req, res)=> {
     res.render('pages/home', {
         title: 'Home',
