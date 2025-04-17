@@ -9,7 +9,7 @@ router.get('/', (req, res)=> {
     dao.findAll(res, dao.table)
 })
 
-router.get('/species/:species', (req, res)=> {
+router.get('/spec/:species', (req, res)=> {
     dao.findHeroesBySpecies(res, dao.table, req.params.species)
 })
 
